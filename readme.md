@@ -4,5 +4,6 @@
 
 To run:
 
-* npm install
-* parcel ./src/index.html
+* `npm install -g parcel-bundler`
+* `npm install`
+* `parcel ./src/index.html`
