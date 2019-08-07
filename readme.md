@@ -1,4 +1,6 @@
-A basic calculator to practice using React hooks and Styled Components.
+# Calculator
+
+### A basic calculator to practice using React hooks and Styled Components.
 
 To run:
 
