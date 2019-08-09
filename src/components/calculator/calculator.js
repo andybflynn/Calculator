@@ -4,9 +4,8 @@ import Screen from './screen';
 import Keyboard from './keyboard';
 import reducer, {defaultState} from './reducer';
 
-const Layout = styled.div`
-  color: slateblue;
-  font-size: 30px;
+const Layout = styled.div`  
+  
 `;
 
 export const CalculatorDispatcher = React.createContext();

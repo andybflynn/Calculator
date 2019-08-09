@@ -9,32 +9,26 @@ export const defaultState = {
 
 const evaluate = (state) => {
   if (!state.operator) return state;
+  let currentVal = state.currentScreenValue || 0;
   switch (state.operator) {
     case '+':
-      return {
-        ...state,
-        currentScreenValue: (parseFloat(state.currentScreenValue) + state.operatorValue).toString(),
-        operatorValue: 0,
-      }
+      currentVal = (state.operatorValue + parseFloat(currentVal)).toString();
+      break;      
     case '-':
-      return {
-        ...state,
-        currentScreenValue: (state.operatorValue - parseFloat(state.currentScreenValue)).toString(),
-        operatorValue: 0,
-      }
+      currentVal = (state.operatorValue - parseFloat(currentVal)).toString();
+      break;
     case '/':
-      return {
-        ...state,
-        currentScreenValue: (state.operatorValue / parseFloat(state.currentScreenValue)).toString(),
-        operatorValue: 0,
-      }
+      currentVal = (state.operatorValue / parseFloat(currentVal)).toString();
+      break;
     case '*':
-      return {
-        ...state,
-        currentScreenValue: (parseFloat(state.currentScreenValue) * state.operatorValue).toString(),
-        operatorValue: 0,
-      }
-  }
+      currentVal = (state.operatorValue * parseFloat(currentVal)).toString();
+      break;
+    }
+    return {
+      ...state,
+      currentScreenValue: currentVal,
+      operatorValue: 0,
+    }
 }
 
 const reducer = (state = defaultState, action) => {
@@ -54,9 +48,9 @@ const reducer = (state = defaultState, action) => {
       }
       return {...state, operator: action.operator, operatorModeActive: true}
     case EVALUATE:
-        return {...evaluate(state), operator: null, operatorModeActive: false};
+      return {...evaluate(state), operator: null, operatorModeActive: false};
     case CLEAR:
-      if (action.clearType === 'AC') {
+      if (action.clearType === 'AC') {        
         return defaultState
       }
       return {...state, currentScreenValue: ''}
