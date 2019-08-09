@@ -5,6 +5,7 @@ const Screen = styled.div`
     padding: 1em .5em;
     text-align: right;
     font-size: 2em;
+    background-color: white;
 `;
 
 export default ({screenValue}) => {
