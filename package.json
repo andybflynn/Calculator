@@ -4,13 +4,15 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "http-server dist -o",
+    "start:dev": "parcel ./src/index.html --open"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
     "actions": "^1.3.0",
+    "http-server": "^0.11.1",
     "parcel-bundler": "^1.12.3",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
