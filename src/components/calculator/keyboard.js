@@ -35,24 +35,9 @@ export default () => {
   const dispatch = React.useContext(CalculatorDispatcher);
   const [shiftMode, setShiftMode] = React.useState(false);
 
-  function keyPressNumber(key) {
-    dispatch(sendNumber(key));
-  }
-
-  function keyPressOperator(operator) {
-    dispatch(changeOperator(operator));
-  }
-
-  function keyPressEvaluate() {
-    dispatch(evaluate());
-  }
-
-  function keyPressClear(clearType) {
-    dispatch(clear(clearType));
-  }
-
   function evalKeyPress(e) {    
-    switch (e.key) {
+    const key = e.key || e;
+    switch (key) {
       case '1':
       case '2':
       case '3':
@@ -64,13 +49,13 @@ export default () => {
       case '9':
       case '0':
       case '.':
-        keyPressNumber(e.key);
+        dispatch(sendNumber(key));
         break;
       case 'c':
-        keyPressClear('C');
+        dispatch(clear('C'));
         break;
-    case 'C':
-        keyPressClear('AC');
+      case 'C':
+        dispatch(clear('AC'));
         break;  
       case '/':
       case '÷':
@@ -78,11 +63,11 @@ export default () => {
       case '×':
       case '-':
       case '+':
-        keyPressOperator(e.key);
+        dispatch(changeOperator(key));
         break;
       case '=':
       case 'Enter':
-        keyPressEvaluate(e.key);
+        dispatch(evaluate());
         break;
       case 'Shift':
         setShiftMode(false);
@@ -113,29 +98,29 @@ export default () => {
   return (
     <Keypad>
       <NumberPanel>
-        <Key value={'1'} action={keyPressNumber}></Key>
-        <Key value={'2'} action={keyPressNumber}></Key>
-        <Key value={'3'} action={keyPressNumber}></Key>
-        <Key value={'4'} action={keyPressNumber}></Key>
-        <Key value={'5'} action={keyPressNumber}></Key>
-        <Key value={'6'} action={keyPressNumber}></Key>
-        <Key value={'7'} action={keyPressNumber}></Key>
-        <Key value={'8'} action={keyPressNumber}></Key>
-        <Key value={'9'} action={keyPressNumber}></Key>
-        <Key value={'.'} action={keyPressNumber}></Key>
-        <Key value={'0'} action={keyPressNumber}></Key>
+        <Key value={'1'} action={evalKeyPress}></Key>
+        <Key value={'2'} action={evalKeyPress}></Key>
+        <Key value={'3'} action={evalKeyPress}></Key>
+        <Key value={'4'} action={evalKeyPress}></Key>
+        <Key value={'5'} action={evalKeyPress}></Key>
+        <Key value={'6'} action={evalKeyPress}></Key>
+        <Key value={'7'} action={evalKeyPress}></Key>
+        <Key value={'8'} action={evalKeyPress}></Key>
+        <Key value={'9'} action={evalKeyPress}></Key>
+        <Key value={'.'} action={evalKeyPress}></Key>
+        <Key value={'0'} action={evalKeyPress}></Key>
         {shiftMode ? 
-          <Key value={'AC'} action={keyPressClear}></Key>
+          <Key value={'C'} action={evalKeyPress}></Key>
           :
-          <Key value={'C'} action={keyPressClear}></Key>
+          <Key value={'c'} action={evalKeyPress}></Key>
         }
       </NumberPanel>
       <OpPanel>
-        <Key value={'÷'} action={keyPressOperator}></Key>
-        <Key value={'×'} action={keyPressOperator}></Key>
-        <Key value={'-'} action={keyPressOperator}></Key>
-        <Key value={'+'} action={keyPressOperator}></Key>
-        <Key equals value={'='} action={keyPressEvaluate}></Key>
+        <Key value={'÷'} action={evalKeyPress}></Key>
+        <Key value={'×'} action={evalKeyPress}></Key>
+        <Key value={'-'} action={evalKeyPress}></Key>
+        <Key value={'+'} action={evalKeyPress}></Key>
+        <Key equals value={'='} action={evalKeyPress}></Key>
       </OpPanel>
     </Keypad>
   )
