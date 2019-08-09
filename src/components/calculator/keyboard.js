@@ -63,6 +63,7 @@ export default () => {
       case '8':
       case '9':
       case '0':
+      case '.':
         keyPressNumber(e.key);
         break;
       case 'c':
@@ -72,7 +73,9 @@ export default () => {
         keyPressClear('AC');
         break;  
       case '/':
+      case '÷':
       case '*':
+      case '×':
       case '-':
       case '+':
         keyPressOperator(e.key);
@@ -128,8 +131,8 @@ export default () => {
         }
       </NumberPanel>
       <OpPanel>
-        <Key value={'/'} action={keyPressOperator}></Key>
-        <Key value={'*'} action={keyPressOperator}></Key>
+        <Key value={'÷'} action={keyPressOperator}></Key>
+        <Key value={'×'} action={keyPressOperator}></Key>
         <Key value={'-'} action={keyPressOperator}></Key>
         <Key value={'+'} action={keyPressOperator}></Key>
         <Key equals value={'='} action={keyPressEvaluate}></Key>

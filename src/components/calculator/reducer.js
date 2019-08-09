@@ -17,9 +17,11 @@ const evaluate = (state) => {
     case '-':
       currentVal = (state.operatorValue - parseFloat(currentVal)).toString();
       break;
+    case '÷':
     case '/':
       currentVal = (state.operatorValue / parseFloat(currentVal)).toString();
       break;
+    case '×':
     case '*':
       currentVal = (state.operatorValue * parseFloat(currentVal)).toString();
       break;

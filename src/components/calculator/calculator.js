@@ -5,7 +5,7 @@ import Keyboard from './keyboard';
 import reducer, {defaultState} from './reducer';
 
 const Layout = styled.div`  
-  
+  font-family: Arial, Helvetica, sans-serif;
 `;
 
 export const CalculatorDispatcher = React.createContext();
