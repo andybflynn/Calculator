@@ -51,8 +51,7 @@ export default () => {
     dispatch(clear(clearType));
   }
 
-  function evalKeyPress(e) {
-    console.log(e);
+  function evalKeyPress(e) {    
     switch (e.key) {
       case '1':
       case '2':
