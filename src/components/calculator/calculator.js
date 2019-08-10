@@ -16,7 +16,7 @@ const Calculator = () => {
 
   return (
     <Layout>
-      <Screen screenValue={state.currentScreenValue}></Screen>
+      <Screen screenValue={state.currentScreenValue} operatorValue={state.operatorValue} currentOperator={state.operator}></Screen>
       <CalculatorDispatcher.Provider value={setState}>
         <Keyboard></Keyboard>
       </CalculatorDispatcher.Provider>

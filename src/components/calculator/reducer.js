@@ -4,7 +4,7 @@ export const defaultState = {
   currentScreenValue: '',
   operatorValue: 0,
   operator: null,
-  operatorModeActive: false
+  operatorModeActive: false,
 }
 
 const evaluate = (state) => {
